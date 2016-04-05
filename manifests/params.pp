@@ -3,6 +3,7 @@
 # Default parameter values
 #
 class calico::params {
+  $compute_openstack_computehost    = true
   $compute_bird_template            = 'calico/compute/bird.conf.erb'
   $compute_bird6_template           = 'calico/compute/bird6.conf.erb'
   $compute_etcd_host                = '127.0.0.1'

@@ -19,6 +19,7 @@ class calico::compute (
   $peer_template           = $calico::compute_peer_template,
   $peers                   = {},
   $router_id               = $calico::router_id,
+  $openstack_computehost   = $calico::compute_openstack_computehost,
 ) {
 
   validate_bool($felix_enable)
@@ -51,10 +52,12 @@ class calico::compute (
     enable => $felix_enable,
   }
 
-  Class['neutron'] ->
-  Package[$calico::compute_package] ->
-  File[$calico::felix_conf] ~>
-  Service[$calico::felix_service]
+  if $openstack_computehost {
+    Class['neutron'] ->
+    Package[$calico::compute_package] ->
+    File[$calico::felix_conf] ~>
+    Service[$calico::felix_service]
+  }
 
   if $manage_metadata_service {
     package { $calico::compute_metadata_package:
