@@ -7,6 +7,8 @@ class calico (
   $enable_ipv6 = $calico::params::enable_ipv6,
   $reflector   = false,
   $debug       = false,
+  $compute_manage_bird_config = $::calico::params::compute_manage_bird_config,
+  $reflector_manage_bird_config = $::calico::params::reflector_manage_bird_config
 ) inherits calico::params {
 
   validate_bool($compute)
