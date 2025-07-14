@@ -35,6 +35,7 @@ class calico::params {
   $felix_os_region                  = undef
   $felix_mtuIfacePattern            = undef
   $felix_etcd_endpoints             = 'http://127.0.0.1:23790'
+  $felix_remove_external_routes     = undef
   $libvirt_service_default          = 'libvirtd'
 #  $manage_packages                  = false
 #  $manage_repo                      = false
